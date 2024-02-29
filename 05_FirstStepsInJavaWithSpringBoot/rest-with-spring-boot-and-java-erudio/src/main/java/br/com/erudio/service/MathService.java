@@ -2,14 +2,24 @@ package br.com.erudio.service;
 
 import br.com.erudio.exceptions.UnsupportedMathOperationException;
 import br.com.erudio.utils.numbersValidations;
+import java.util.List;
+
 
 public class MathService {
 	
+	Double numberOne = 0D;
+	Double numberTwo = 0D;
+	List<String> numbers;
+	ValidationService validationService = new ValidationService();
+	
+	
 	public Double sum(String numberOne, String numberTwo) throws Exception{
 		
-		if(!numbersValidations.isNumeric(numberOne) || !numbersValidations.isNumeric(numberTwo)) {
-			throw new UnsupportedMathOperationException("Please set a numeric value");
-		}
+		numbers.add(numberOne);
+		numbers.add(numberTwo);
+		
+		validationService.processOperationValidation("sum", numbers);
+		
 		return numbersValidations.covertToDouble(numberOne) + numbersValidations.covertToDouble(numberTwo);
 		
 	}
